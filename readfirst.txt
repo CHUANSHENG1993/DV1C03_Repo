@@ -1,0 +1,9 @@
+DV1C03 - DevOps - CI CD Pipeline.
+We will be using Declarative Pipeline with 5 Parallel Stages
+Tools to be used are
+1) Jenkins
+2) Maven
+3) SonarQube
+4) Portainer
+5) Minikube 
+6) Github
