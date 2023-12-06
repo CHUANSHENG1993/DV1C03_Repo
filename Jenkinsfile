@@ -69,7 +69,7 @@ pipeline {
         stage('Stage 4') {
             steps {
                 script {
-                    def userInput = input message: 'Prompt: 5683554u, proceed to release the work to next phase?\nAbort', parameters: [booleanParam(defaultValue: false, description: 'Click to proceed', name: 'proceed')]
+                    def userInput = input message: 'Prompt: 5683554u, proceed to release the work to next phase?\nAbort', parameters: [booleanParam(defaultValue: false, description: 'Click to proceed', name: 'proceed')], parameterStrategy: 'wide'
                     if (userInput) {
                         echo "Stage 5_5683554u : Work Release - Proceed to Next Phase"
                     } else {
