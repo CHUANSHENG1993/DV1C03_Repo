@@ -18,7 +18,7 @@ pipeline {
         stage('Stage 1') {
             steps {
                 cleanWs()
-                checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/CHUANSHENG1993/TestDV1C03.git']]])
+                checkout([$class: 'GitSCM', branches: [[name: 'master']], userRemoteConfigs: [[url: 'https://github.com/CHUANSHENG1993/DV1C03.git']]])
                 sh 'mvn clean compile'
                 sh 'mvn test'
                 echo 'Stage1_5683554u : Release Environment Preparation Completed'
@@ -68,10 +68,9 @@ pipeline {
             }
         stage('Stage 4') {
             steps {
-                input message: 'Prompt: 5683554u, proceed to release the work to next phase?\nAbort'
-                parameterStrategy: 'wide'
                 script {
-                    if (currentBuild.parameters.proceed) {
+                    def userInput = input message: 'Prompt: 5683554u, proceed to release the work to next phase?\nAbort', parameters: [booleanParam(defaultValue: false, description: 'Click to proceed', name: 'proceed')]
+                    if (userInput) {
                         echo "Stage 5_5683554u : Work Release - Proceed to Next Phase"
                     } else {
                         echo "Stage 5_568354u : Work Release - Stops"
