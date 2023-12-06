@@ -69,10 +69,7 @@ pipeline {
         stage('Stage 4') {
             steps {
                 step([
-                    stage: 'Stage 4',
-                    task: 'UserInput',
-                    inputMode: 'Prompt',
-                    parametersStr: 'Prompt: 5683554u, proceed to release the work to next phase?\nAbort'
+                    input message: 'Prompt: 5683554u, proceed to release the work to next phase?\nAbort'
                 ])
                 script {
                     if (currentBuild.parameters.proceed) {
