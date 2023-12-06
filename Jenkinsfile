@@ -79,19 +79,20 @@ pipeline {
             }
         }
         stage('Stage 5') {
+            when { expression { userInput.proceed } }
             steps {
                 script {
-                    if (currentBuild.parameters.proceed) {
-                        echo 'Stage 5_568354u: Work Release - Proceed to Next Phase'
-                        docker.withDockerRegistry(credentialsId:'docker', toolName: 'docker') {
-                        sh."docker build -t 5683554u_DV1C03 ."
-                        sh "docker tag 5683554u_DV1C03 sim1993/5683554u_DV1C03:latest"
-                        sh "docker push sim1993/5683554u_DV1C03:latest"
-                        }
-                        sh "trivy sim1993/5683554u_DV1C03:latest > trivy.txt"
-                    } else {
-                        echo 'Stage 5_568354u : Work Release - Stops'
-                    }
+                    if (userInput.proceed) {
+                    echo 'Stage 5_568354u: Work Release - Proceed to Next Phase'
+                    docker.withDockerRegistry(credentialsId:'docker', toolName: 'docker') {
+                    sh."docker build -t 568354u_DV1C03 ."
+                    sh "docker tag 568354u_DV1C03 sim1993/568354u_DV1C03:latest"
+                    sh "docker push sim1993/568354u_DV1C03:latest"
+                    sh "trivy sim1993/568354u_DV1C03:latest > trivy.txt"
+                }
+            } else {
+                echo 'Stage 5_568354u : Work Release - Stops'
+            }
                 }
             }
         }
