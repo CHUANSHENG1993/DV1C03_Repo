@@ -76,9 +76,9 @@ pipeline {
                 ])
                 script {
                     if (currentBuild.parameters.proceed) {
-                        echo 'Stage 5_5683554u: Work Release - Proceed to Next Phase'
+                        echo "Stage 5_5683554u : Work Release - Proceed to Next Phase"
                     } else {
-                        echo 'Stage 5_568354u : Work Release - Stops'
+                        echo "Stage 5_568354u : Work Release - Stops"
                     }
                 }
             }
