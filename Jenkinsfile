@@ -116,3 +116,4 @@ pipeline {
             sh "docker rm -f WebAPP_5683554u || true"
         }
     }
+}
