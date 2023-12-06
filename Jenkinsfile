@@ -69,6 +69,7 @@ pipeline {
         stage('Stage 4') {
             steps {
                 input message: 'Prompt: 5683554u, proceed to release the work to next phase?\nAbort'
+                parameterStrategy: 'wide'
                 script {
                     if (currentBuild.parameters.proceed) {
                         echo "Stage 5_5683554u : Work Release - Proceed to Next Phase"
