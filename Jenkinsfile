@@ -61,7 +61,6 @@ pipeline {
                         waitForQualityGateway abortPipeline: false, credentialsId: 'Sonar-token' 
                     }
                     perfReport percentiles: '0,50,90,100', sourceDataFiles: 'results.jtl'
-                    junit testResults: 'target/surefire-reports/*.xml', allowEmptyResults: true, healthScaleFactor: 1.0, unstable: 80.0, healthy: 90.0
                     echo "Stage3_5683554u: API test completed"
                     echo "Stage3_5683554u: SCAN test completed"
                 }
