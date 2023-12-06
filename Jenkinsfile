@@ -15,7 +15,7 @@ pipeline {
         stage('Stage 1') {
             steps {
                 cleanWs()
-                git branch 'master', credentialsID: github, url: 'https://github.com/CHUANSHENG1993/TestDV1C03.git'
+                git branch 'master', credentialsID: 'github', url: 'https://github.com/CHUANSHENG1993/TestDV1C03.git'
                 sh 'mvn clean compile'
                 sh 'mvn test'
                 echo 'Stage1_5683554u : Release Environment Preparation Completed'
